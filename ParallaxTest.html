@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<title>Parallax sample</title>
+<head>
+  <style>
+    body {
+      margin:0;
+      padding:0;
+      position: relative;
+    }
+    #firstUL {
+      position: fixed;
+      width:100%;
+      height:50px;
+      background-color: gray;
+      z-index: 5;
+      border-bottom: 1px solid black;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+      box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    }
+    #firstUL > li {
+      float:left;
+      text-decoration: none;
+      display: inline-block;
+      padding-top:5px;
+    }
+    #firstUL > li > a{
+      font-family: monospace;
+      font-size: 30px;
+      padding: 10px 15px 10px 15px;
+      height:44px;
+      text-decoration: none;
+    }
+    #firstUL > li > a:hover {
+      background-color:#cecccc;
+    }
+    #firstUL > li > a:link, a:visited{
+      color:black;
+    }
+    #photo1 {
+      position: relative;
+      top: 50px;
+      height: 250px;
+      width: 100%;
+    }
+    #climbPic {
+      width: 100%;
+    }
+    #content {
+      position: relative;;
+      margin-top: 350px;
+      height: 1000px;
+      width: 100%;
+      background-color: white;
+    }
+    h1 {
+      position: absolute;
+      left:50px;
+      top:15px;
+    }
+    h2 {
+      position: absolute;
+      left:50px;
+      top:100px;
+    }
+    h3 {
+      position:absolute;
+      left:50px;
+      bottom:50px;
+    }
+    #dropdownS {
+      background-color: #cecccc;
+      width: 200px;
+      height:87px;
+      top:10px;
+      left:-1px;
+      font-size: 0px;
+      -webkit-box-shadow: 10px 9px 11px -4px rgba(122,122,122,1);
+      -moz-box-shadow: 10px 9px 11px -4px rgba(122,122,122,1);
+      box-shadow: 10px 9px 11px -4px rgba(122,122,122,1);
+      border: 1px solid black;
+      position: relative;
+      display: none;
+
+    }
+    #dropdownS > a {
+      font-size: 25px;
+      display:inline-block;
+      width:180px;
+      text-decoration: none;
+      margin:0px;
+      padding-left: 20px;
+      font-family: monospace;
+    }
+    #dropdownS > a:link, a:visited {
+      color:black;
+    }
+    #dropdownS > a:hover {
+      background-color: gray;
+    }
+    #fadePhoto {
+      position: absolute;
+      left:300px;
+      width: 450px;
+      height:auto;
+      top: 500px;
+      transition: 0.3s;
+    }
+    #climbPic2 {
+      width:100%;
+      border-radius: 10px;
+    }
+  </style>
+  <script>
+
+    function parallax(){    /*Parallax function*/
+      var x = document.getElementById('photo1');
+      x.style.top = (window.pageYOffset * .4) +"px"
+    };
+    window.addEventListener("scroll", parallax, false);
+
+    function dropdown(showHide, x){   /*dropdown menu function*/
+      var dpdn = document.getElementById(x);
+      if (showHide === 0) {
+        dpdn.style.display ="none";
+      } else {
+        dpdn.style.display= "block";
+      }
+    };
+    function onscroll(){            /*image appear with scroll*/
+      var z = document.getElementById('fadePhoto')
+      var ypos2 = window.pageYOffset
+      if (ypos2 < 825){
+        z.style.opacity = "0"
+      } else {
+        z.style.opacity = "1"
+      }
+    };
+    window.addEventListener("scroll", onscroll);
+  </script>
+</head>
+
+<body>
+  <ul id="firstUL">
+      <li><a href="#">Menu</a></li>
+      <li onclick="dropdown(1,'dropdownD')" onclick="dropdown(0,'dropdownD')"><a href="#">Sample</a>
+    <!--  <div id="dropdownD">
+            <a href="#">onClick<a>
+            <a href="#">Dropdown<a>
+            <a href="#">Test<a>   -->
+      </li>
+      <li onmouseover="dropdown(1,'dropdownS')" onmouseout="dropdown(0,'dropdownS')"><a href="#">Dropdown</a>
+         <div id="dropdownS">
+            <a href="#">OnMouseOver<a>
+            <a href="#">Dropdown<a>
+            <a href="#">Test<a>
+        </div>
+      </li>
+  </ul>
+
+  <div id="photo1">
+    <img src="http://highpointclimbing.com/downtown/wp-content/themes/highpoint/images/climbing-school/climbing_school_featured.jpg" id="climbPic">
+  </div>
+
+  <div id="content">
+    <h1>Mouse over "dropdown" to test mouse over feature<h1>
+    <h2>This is to test scroll parallax</h2>
+    <div id="fadePhoto">
+      <img id="climbPic2" src="http://www.communitywealth.com/wp-content/uploads/2012/09/RockClimbing21.jpg">
+    </div>
+    <h3>Worked like a charm!</h3>
+  </div>
+
+</body>
+
+</html>
