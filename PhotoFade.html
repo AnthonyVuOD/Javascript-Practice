@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<title>Javascript DOM</title>
+
+<head>
+  <style>
+    body{
+        margin:0;
+        padding:0;
+        width:100%;
+    }
+    #wrapper {
+        width:100%;
+        margin:0;
+        padding:0;
+        float:left;
+        height:100%;
+        background-color: gray;
+    }
+    .images {
+      float:left;
+      width:50%;
+      opacity:.15;
+      transition:1s;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <img class="images" src="http://www.sbs.com.au/news/sites/sbs.com.au.news/files/images/2/6/26Dec_NBA_800x600.jpg" id="image1">
+    <img class="images" src="http://onmilwaukee.com/images/articles/bu/buckswarriors/buckswarriors_fullsize_story1.jpg?1449606693" id="image2">
+    <img class="images" src="http://www.sportstarlive.com/multimedia/dynamic/02765/WARRIORS_LAKERS_Cr_2765588b.jpg" id="image3">
+    <img class="images" src="http://www.hindustantimes.com/rf/image_size_800x600/HT/p1/2015/06/17/Incoming/Pictures/1359642_Wallpaper2.jpg" id="image4">
+    <img class="images" src="http://aviewfrommyseat.com/wallpaper/anonymous-20140527200947.jpg" id="image5">
+    <img class="images" src="http://img15.deviantart.net/c89e/i/2013/223/5/e/bo_knows_defense_by_taliaspadre-d6hlsl8.jpg" id="image6">
+  </div>
+
+<script>
+    var pix = document.getElementsByClassName('images');
+    for (var i=0; i<pix.length; i++){
+      pix[i].onmouseover = appear;
+      function appear(){
+        this.style.opacity = "1";
+      }
+      pix[i].onmouseout = function(){
+        this.style.opacity = ".4"
+      }
+    };
+    /*document.getElementById('image1').onmouseover = appear;
+    function appear(){
+      this.style.opacity="1"
+    };
+    document.getElementById('image2').onmouseover = appear;
+    function appear(){
+      this.style.opacity="1"
+    };
+    document.getElementById('image3').onmouseover = appear;
+    function appear(){
+      this.style.opacity="1"
+    };
+    document.getElementById('image4').onmouseover = appear;
+    function appear(){
+      this.style.opacity="1"
+    };
+    document.getElementById('image5').onmouseover = appear;
+    function appear(){
+      this.style.opacity="1"
+    };
+    document.getElementById('image6').onmouseover = appear;
+    function appear(){
+      this.style.opacity="1"
+    };*/
+</script>
+
+</body>
+
+</html>
