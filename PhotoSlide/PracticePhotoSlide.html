@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice Photo slide</title>
+    <style media="screen">
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        margin: 0 auto;
+        top: 45px;
+        width: 45%;
+        position: relative;
+        text-align: center;
+      }
+      #images {
+        width: 100%;
+        opacity: 1;
+        -webkit-transition:opacity 1.0s linear 1s;
+        transition: opacity 1.0s linear 1s;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <img src="image1.jpg" name= "slideShow" id="images"/>
+      <br><br>
+      <button type="button" onclick="changeImages(-1)" id="backButton">Back</button>
+      <button type="button" onclick="changeImages(1)" id="nextButton">Next</button>
+    </div>
+
+  <script type="text/javascript">
+    var image = new Array("image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg");
+    var image_number = 0;
+    var image_length = image.length-1;
+
+    function changeImages(x){
+      image_number = image_number + x;
+      if (image_number>image_length) {
+        image_number = 0;
+      }
+      if (image_number<0) {
+        image_number = image_length;
+      }
+      document.slideShow.src = image[image_number];
+    };
+
+
+  </script>
+  </body>
+</html>
